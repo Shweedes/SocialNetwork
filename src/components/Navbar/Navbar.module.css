@@ -1,0 +1,29 @@
+.nav {
+    background-color: #c8f4e5;
+    grid-area: nav;
+    margin-right: 15px;
+}
+
+.navText{
+    padding-left: 10px;
+}
+
+.item{
+    margin: 2px;
+}
+
+.item:last-child {
+    margin-top: 100px;
+}
+
+.active{
+    color: gold;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.link{
+    text-decoration: none;
+    color: grey;
+    font-size: 30px;
+}

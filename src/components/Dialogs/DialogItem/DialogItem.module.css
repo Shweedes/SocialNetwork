@@ -1,0 +1,19 @@
+.dialog {
+    display: flex;
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
+
+.dialog img {
+    padding: 5px;
+    width: 25%;
+    border-radius: 50%;
+}
+
+.dialog a {
+    color: #ff000a;
+    font-size: 25px;
+    padding-left: 10px;
+    text-decoration: none;
+    align-content: center;
+}

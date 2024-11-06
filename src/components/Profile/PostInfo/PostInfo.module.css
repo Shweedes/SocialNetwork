@@ -1,0 +1,11 @@
+.logo img {
+    width: 1000px;
+    height: 250px;
+    padding: 5px 5px 5px 5px;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    padding-left: 5px;
+}
