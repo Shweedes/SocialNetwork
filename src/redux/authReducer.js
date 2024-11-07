@@ -1,40 +1,44 @@
-import {usersAPI} from "../api/api";
+import { authAPI } from "../api/api";
 
-let FOLLOW = 'FOLLOW'
-let UNFOLLOW = 'UNFOLLOW'
-let SET_USER_DATA = 'SET_USER_DATA'
+const SET_USER_DATA = 'SET_USER_DATA';
 
-let initialState = {
-    userId: null,
+const initialState = {
     email: null,
+    userId: null,
     login: null,
     isAuth: false
-}
+};
 
-export const follow = (userId) => ({type: FOLLOW, userId})
-export const unfollow = (userId) => ({type: UNFOLLOW, userId})
-export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}})
+export const setAuthUserData = (email, userId, login) => ({
+    type: SET_USER_DATA,
+    data: { email, userId, login }
+});
 
-export const getAuthData = () => {
-    return (dispatch) => {
-        usersAPI.getAuthData().then((response) => {
-            if(response.data.resultCode === 0) {
-                let {userId, email, login} = response.data.data;
-                dispatch(setAuthUserData(userId, email, login))
-            }
-        });
+export const getAuthDataAboutMe = () => async (dispatch) => {
+    try {
+        const response = await authAPI.me();
+        console.log('API response:', response.data);
+        if (response.data.resultCode === 0) {
+            const { email, id: userId, login } = response.data.data;
+            dispatch(setAuthUserData(email, userId, login));
+        }
+    } catch (error) {
+        console.error('Error fetching auth data:', error);
     }
-}
+};
 
 const authReducer = (state = initialState, action) => {
+    console.log('Action data:', action.data);
     switch (action.type) {
         case SET_USER_DATA:
             return {
-                ...state, ...action.data, isAuth: true
-            }
+                ...state,
+                ...action.data,
+                isAuth: true
+            };
         default:
             return state;
     }
-}
+};
 
 export default authReducer;

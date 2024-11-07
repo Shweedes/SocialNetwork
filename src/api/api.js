@@ -23,13 +23,15 @@ export const usersAPI = {
        return instance.delete(`follow/${userId}`)
     },
 
-    getAuthData() {
-        return instance.get(`auth/me`)
-    },
-
     getCurrentProfile(currentUserId) {
         return instance.get(`profile/` + currentUserId).then(response => {
             return response.data
         });
+    }
+}
+
+export const authAPI = {
+    me () {
+        return instance.get(`auth/me`)
     }
 }
