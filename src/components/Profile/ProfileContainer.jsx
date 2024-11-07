@@ -55,7 +55,7 @@ const ProfileContainer = (props) => {
         }
 
         props.viewCurrentProfile(currentUserId);
-    }, [userId, props]); // Выполнить только при изменении userId или props
+    }, [userId, props]);
 
     return (
         <Profile profile={props.profile}/>
