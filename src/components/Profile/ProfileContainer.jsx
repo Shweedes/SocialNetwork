@@ -71,4 +71,4 @@ const ProfileContainer = (props) => {
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile
 });
-export default compose(connect(mapStateToProps, {viewCurrentProfile}),withAuthNavigate)(ProfileContainer)
+export default compose(connect(mapStateToProps, {viewCurrentProfile}))(ProfileContainer)
