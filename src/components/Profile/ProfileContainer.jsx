@@ -47,6 +47,7 @@ import {connect} from "react-redux";
 import {viewCurrentProfile} from "../../redux/profilePageReducer";
 import {Navigate, useParams} from 'react-router-dom';
 import {withAuthNavigate} from "../../hoc/withAuthNavigate";
+import {compose} from "redux";
 
 const ProfileContainer = (props) => {
     const {userId} = useParams(); // Получаем параметр userId из маршрута
@@ -66,9 +67,8 @@ const ProfileContainer = (props) => {
     );
 }
 
-let AuthNavigateComponent = withAuthNavigate(ProfileContainer);
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile
 });
-export default connect(mapStateToProps, {viewCurrentProfile})(AuthNavigateComponent);
+export default compose(connect(mapStateToProps, {viewCurrentProfile}),withAuthNavigate)(ProfileContainer)
