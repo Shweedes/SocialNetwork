@@ -19,6 +19,9 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+            if (this.props.isAuth === false) {
+            return <Navigate to={'/login'}/>
+        }
         return (
             <Profile profile={this.props.profile}/>
         )
@@ -42,7 +45,7 @@ import React, {useEffect} from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {viewCurrentProfile} from "../../redux/profilePageReducer";
-import {useParams} from 'react-router-dom';
+import {Navigate, useParams} from 'react-router-dom';
 
 const ProfileContainer = (props) => {
     const {userId} = useParams(); // Получаем параметр userId из маршрута
@@ -57,13 +60,19 @@ const ProfileContainer = (props) => {
         props.viewCurrentProfile(currentUserId);
     }, [userId, props]);
 
+    if (!props.isAuth) {
+        return (<Navigate to={'/login'}/>)
+    }
+
+
     return (
         <Profile profile={props.profile}/>
     );
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth
 });
 
 export default connect(mapStateToProps, {viewCurrentProfile})(ProfileContainer);
