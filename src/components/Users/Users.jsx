@@ -2,7 +2,6 @@ import styles from "./Users.module.css";
 import userPhoto from "../../asets/images/user.png";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 let Users = (props) => {
 
@@ -33,8 +32,6 @@ let Users = (props) => {
                     </div>
                     <div>
                         {user.followed ? <button disabled = {props.followingInProgress.some( id => id === user.id)} onClick={() => {props.unfollow(user.id)}}>Unfollow</button>
-
-
                             : <button disabled = {props.followingInProgress.some( id => id === user.id)} onClick={() => {props.follow(user.id)}}>Follow</button>}
 
                     </div>

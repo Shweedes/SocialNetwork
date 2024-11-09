@@ -17,27 +17,29 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
 
-        this.props.getUsers(this.props.currentPage,this.props.pageSize);
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
 
-/*      this.props.toggleIsFetching(true);
+        /*      this.props.toggleIsFetching(true);
 
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setUsersTotalCount(data.totalCount);
-        });*/
+                usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
+                    this.props.toggleIsFetching(false);
+                    this.props.setUsers(data.items);
+                    this.props.setUsersTotalCount(data.totalCount);
+                });*/
     }
 
     onClick = (pageNumber) => {
-        this.props.getUsers(pageNumber,this.props.pageSize);
+        if (this.props.currentPage !== pageNumber) {
+            this.props.getUsers(pageNumber, this.props.pageSize);
+        }
 
-       /* this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true);
+        /* this.props.setCurrentPage(pageNumber)
+         this.props.toggleIsFetching(true);
 
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
-            this.props.setUsers(data.items);
-            this.props.toggleIsFetching(false);
-        });*/
+         usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
+             this.props.setUsers(data.items);
+             this.props.toggleIsFetching(false);
+         });*/
     }
 
     render() {
@@ -95,13 +97,13 @@ let mapDispatchToProps = (dispatch) => {
 */
 
 export default compose(connect(mapStateToProps,
-    {
-        follow,
-        unfollow,
-        setCurrentPage,
-        setUsersTotalCount,
-        toggleFollowingProgress,
-        getUsers,
-    }),
+        {
+            follow,
+            unfollow,
+            setCurrentPage,
+            setUsersTotalCount,
+            toggleFollowingProgress,
+            getUsers,
+        }),
     withAuthNavigate
 )(UsersContainer)

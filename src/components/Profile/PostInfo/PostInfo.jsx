@@ -18,7 +18,7 @@ const PostInfo = (props) => {
                 <div className={s.avatar}>
                     <img alt={""} src={props.profile.photos.large}/>
                     <div>{props.profile.fullName}</div>
-                    <ProfileStatus status={"Hello"}/>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
                 </div>
             </div>
         )
