@@ -1,4 +1,3 @@
-import React from 'react'
 import {
     addMessageActionCreator,
     addUserActionCreator,
@@ -7,7 +6,6 @@ import {
 } from "../../redux/dialogsPageReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {Navigate} from "react-router-dom";
 import {withAuthNavigate} from "../../hoc/withAuthNavigate";
 import {compose} from "redux";
 

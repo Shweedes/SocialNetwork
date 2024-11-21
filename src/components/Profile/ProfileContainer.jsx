@@ -10,27 +10,27 @@ import Preloader from "../common/Preloader/Preloader";
 const ProfileContainer = (props) => {
     const {userId} = useParams(); // Получаем параметр userId из маршрута
 
-    useEffect(() => {
-        let currentUserId = userId || 2; // Если userId не задан, используем 2
+/*    useEffect(() => {
+        let currentUserId = userId || 31765; // Если userId не задан, используем 2
         props.viewCurrentProfile(currentUserId);
         props.getStatus(currentUserId);
-    }, [userId]);
+    }, [userId]);*/
 
-    if (!props.profile) {
-        return <Preloader/>; // Или любой другой индикатор загрузки
-    }
-
-    /*useEffect(() => {
+    useEffect(() => {
         let currentUserId = userId;
 
         if (!currentUserId) {
-            currentUserId = 2;
+            currentUserId = 31765;
         }
 
         props.viewCurrentProfile(currentUserId);
         props.getStatus(currentUserId)
 
-    }, [userId]);*/
+    }, [userId]);
+
+    if (!props.profile) {
+        return <Preloader/>; // Или любой другой индикатор загрузки
+    }
 
     return (
         <Profile profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
